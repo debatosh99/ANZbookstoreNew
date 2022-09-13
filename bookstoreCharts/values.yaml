@@ -1,0 +1,29 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: gcr.io/playground-s-11-5c5afcd7/bookstore
+  tag: v1
+  pullPolicy: Always
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi 
+service:
+  name: Node
+  type: LoadBalancer
+  servicePort: 80
+  serviceTargetPort: 8080
+  containerServicePort: 8080
+  debugmode: 1
+
+services:
+base:
+  enabled: false
+  replicaCount: 1
+  image:
+    tag : v0.9.9
+  weight: 100
+istio:
+  enabled: false
+  weight: 100

@@ -1,0 +1,61 @@
+NAME: bookstore
+LAST DEPLOYED: Mon Sep 12 21:18:01 2022
+NAMESPACE: default
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+HOOKS:
+MANIFEST:
+---
+# Source: bookstore/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: "bookstore"
+  labels:
+    name: "bookstore"
+spec:
+  type: LoadBalancer
+  ports:  
+    - port: 80
+      targetPort: 8080
+  selector:
+    name: "bookstore"
+---
+# Source: bookstore/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "bookstore"
+  labels:
+    name: 'bookstore'
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      name: "bookstore"
+  template:
+    metadata:
+      name: "bookstore"
+      labels:
+        name: "bookstore"
+    spec:
+      containers:
+      - name: "bookstore"
+        image: "gcr.io/playground-s-11-5c5afcd7/bookstore:v1:v1"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+        env:
+          - name: DEBUG_MODE
+            value : "1"
+
