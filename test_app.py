@@ -10,10 +10,8 @@ class TestApp(unittest.TestCase):
 
 
     def test_get_book(self):
-        #baseurl = "http://127.0.0.1:5000"
-        #response = requests.get(baseurl + "/v1/books/3")
-        #response.json()
-        self.assertEqual(1,1)
+        res = requests.get(TestApp.baseurl)
+        self.assertEqual(res.status_code, 200)
 
     def test_create_book(self):
         res = requests.post(TestApp.baseurl, json=TestApp.testbook1)
@@ -25,13 +23,14 @@ class TestApp(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertIsInstance(len(res.json()), int)
 
-
-
     def test_get_matching_books(self):
-        # r = requests.get(TestApp.baseurl)
-        # self.assertEqual(r.status_code, 200)
-        # self.assertEqual(len(r.json()), 2)
-        self.assertEqual(1, 1)
+        res1 = requests.get(TestApp.baseurl+'/1')
+        res2 = requests.get(TestApp.baseurl + '/0')
+        self.assertEqual(res1.status_code, 200)
+        self.assertIsInstance(len(res1.json()), int)
+        self.assertEqual(res2.status_code, 200)
+        self.assertEqual(len(res2.json()), 0)
+
 
 
 
