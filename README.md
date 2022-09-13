@@ -1,6 +1,6 @@
 # ANZbookstoreNew
 
-1.	Set up the project on local for testing and initial validation before deployment to GCP cloud:
+1.	#Set up the project on local for testing and initial validation before deployment to GCP cloud:
 
 Download to local the repo from github and import to editor like pycharm and select virtual env or conda env with python 3.6 or 3.7:
 
@@ -27,7 +27,7 @@ Dockerfile -> This is the dockerfile to containerize the app.
 
 
 
-2.	Run the code locally on the system and run tests and validate.
+2.	#Run the code locally on the system and run tests and validate.
 Run the dbInitializer.py to reinitialize the DB and create tables and insert sample records and run sample query.
  
 
@@ -62,7 +62,7 @@ Run the unit tests:-
 
 
 
-3.	Deployment to cloud GCP App Engine
+3.	#Deployment to cloud GCP App Engine
 
 Login to GCP console and open cloud shell and run “gcloud auth list”
 This should open up the browser and ask to authenticate.
@@ -108,7 +108,7 @@ Then verify the rest endpoints :-
  
  
 
-4.	Deployment to cloud GKE cluster using Terraform and Helm
+4.	#Deployment to cloud GKE cluster using Terraform and Helm
 
 I have the Terraform code and Helm charts in separate folder in the project repo:-
  
@@ -149,7 +149,7 @@ Creation complete after 7m8s [id=projects/playground-s-11-6e583295/locations/us-
  
 
 
-5.	Creation of app docker image.
+5.	#Creation of app docker image.
 Now its time to create the docker image of the project and push it to gcr container repo.
 
 
@@ -169,7 +169,7 @@ IMAGES: gcr.io/playground-s-11-6e583295/bookstore:v1
 
 
 
-6.	Helm installation of the charts for app deploy to GKE
+6.	#Helm installation of the charts for app deploy to GKE
 
 
 Then run below command which enables kubectl to get credentials and address of the GKE cluster just created and cache it in kubeconfig.
@@ -198,7 +198,7 @@ Then run (kubectl get svc) to list all services and check the EXTERNAL-IP of the
 
  
 
-7.	The app can now be accessed at :
+7.	#The app can now be accessed at :
 http://34.135.172.132/v1/books
  
 http://34.135.172.132/v1/books/3
