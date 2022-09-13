@@ -6,10 +6,11 @@ import json
 ##################################################################################
 # CREATE BASIC SQLLITE DB AND TABLE
 ##################################################################################
-def createDBandTable():
+def createDBandTable(dbname):
+    dbname = dbname
     try:
         print(".....CREATE BASIC SQLLITE DB AND TABLE.....")
-        con = sqlite3.connect('Library2.db')
+        con = sqlite3.connect(dbname)
         con.row_factory = sqlite3.Row
         cur = con.cursor()
         cur.execute("DROP TABLE IF EXISTS bookstore")
@@ -136,7 +137,7 @@ def filterAndGetJson():
 
 
 if __name__ == '__main__':
-    createDBandTable()
+    createDBandTable("Library2.db")
     insertSampleRecords()
     printAllRecords()
     filterAndGetJson()
