@@ -1,4 +1,4 @@
-# ANZbookstoreNew
+# ANZbookstore
 
 1.	#Set up the project on local for testing and initial validation before deployment to GCP cloud:
 
